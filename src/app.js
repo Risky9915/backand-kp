@@ -33,8 +33,6 @@ app.use('/api/tugas', tugasRoutes);
 app.use('/api/pengumpulan', pengumpulanRoutes);
 app.use('/api/stats', statsRoutes);
 
-export default app;
-
 import db from './config/db.js';
 
 app.get('/api/health/db', async (req, res) => {
@@ -52,3 +50,4 @@ app.get('/api/health/db', async (req, res) => {
   }
 });
 
+export default app;
