@@ -34,3 +34,21 @@ app.use('/api/pengumpulan', pengumpulanRoutes);
 app.use('/api/stats', statsRoutes);
 
 export default app;
+
+import db from './config/db.js';
+
+app.get('/api/health/db', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT COUNT(*) AS total FROM admin');
+    res.json({
+      status: 'ok',
+      admin_total: rows[0].total
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 'error',
+      message: err.message
+    });
+  }
+});
+
