@@ -43,12 +43,12 @@ app.get('/api/health/db', async (req, res) => {
       tables: rows
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      status: 'error',
-      message: err.sqlMessage || err.message || 'unknown db error'
-    });
-  }
+  console.error('DB ERROR:', err);
+  res.status(500).json({
+    status: 'error',
+    error: err
+  });
+}
 });
 
 export default app;
