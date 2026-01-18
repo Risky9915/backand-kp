@@ -1,3 +1,7 @@
 import app from './app.js';
 
-export default app;
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Backend berjalan di port ${PORT}`);
+});
