@@ -10,15 +10,8 @@ const db = mysql.createPool({
   password: process.env.MYSQLPASSWORD,
   database: process.env.MYSQLDATABASE,
   waitForConnections: true,
-  connectionLimit: 10
+  connectionLimit: 10,
+  connectTimeout: 10000
 });
-
-try {
-  const connection = await db.getConnection();
-  console.log('✅ Terhubung ke MySQL Railway');
-  connection.release();
-} catch (error) {
-  console.error('❌ Gagal konek ke MySQL Railway:', error);
-}
 
 export default db;
