@@ -36,6 +36,7 @@ app.use('/api/stats', statsRoutes);
 import db from './config/db.js';
 
 app.get('/api/health/db', async (req, res) => {
+  res.send('API berjalan');
   try {
     const [rows] = await db.query('SHOW TABLES');
     res.json({
